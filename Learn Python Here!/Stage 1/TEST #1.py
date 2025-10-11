@@ -35,9 +35,11 @@
 # Q10: using the list below, write code to see if the list has duplicate values.
 # If it does, return True. If it does not, return False.
 
-sample_List : list = [92354, 79823, "Hello", 92354, 123, 0.5, True, "World", 123, 2435, 97, 978234655.23, False]
+sample_list : list = [92354, 79823, "Hello", 92354, 123, 0.5, True, "World", 123, 2435, 97, 978234655.23, False]
 
 def findDuplicates(inputList: list) -> bool:
     # Your code here
     pass
-    
+
+
+# Great work finishing the test! Review your answers and run the code to debug!
