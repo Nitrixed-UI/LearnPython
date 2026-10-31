@@ -83,7 +83,7 @@ print(greet_with_default("Bob")) # Output: Hello, Bob!
 # Why care about default parameters?
 # They make functions more flexible and easier to use.
 # They allow you to provide sensible defaults while still allowing customization.
-# They can help reduce the number of function overloads needed.
+# They can help reduce the number of similar functions you need to write.
 # They improve code readability by making it clear what the default behavior is.
 
 # -- Lesson 3 -- Tuples
@@ -135,7 +135,7 @@ print("Uppercase text:", text.upper())
 print("Lowercase text:", text.lower())
 print("Replaced text:", text.replace("World", "Python"))
 
-# In lesson 1, we covered what these methods are, but not really when or why to use them.
+# In stage 1, we covered what these methods are, but not really when or why to use them.
 # Lets go over that now.
 
 # When to use string methods:
@@ -164,7 +164,7 @@ print("Count of 2:", numbers.count(2))
 numbers.clear()
 print("After clearing the list:", numbers)
 
-# Again, in lesson 1, we covered what these methods are, but not really when or why to use them.
+# In stage 1, we only used append, and did not cover when or why to use these methods.
 # Lets go over that now.
 
 # When to use list methods:
@@ -174,7 +174,7 @@ print("After clearing the list:", numbers)
 # Why use list methods:
 # They provide a convenient way to perform common list operations without writing custom code.
 # They improve code readability by making it clear what operation is being performed.
-# They can help prevent errors by handling edge cases (e.g., removing an element that doesn't exist).
+# They can help catch errors early (e.g., removing an element that doesn't exist raises a ValueError).
 
 # -- Lesson 7 -- Dictionary Methods
 

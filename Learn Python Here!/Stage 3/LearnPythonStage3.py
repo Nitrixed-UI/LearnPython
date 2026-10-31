@@ -17,7 +17,7 @@ BALL_SIZE = 12
 PLAYER_SPEED = 10
 CPU_MAX_SPEED = 9               # CPU paddle max speed per frame
 BALL_SPEED = 2                  # Initial ball speed
-MAX_BALL_SPEED = 250            # Hard limit for ball velocity
+MAX_BALL_SPEED = PADDLE_WIDTH + BALL_SIZE - 1  # Hard limit for ball velocity (any faster and it can jump past a paddle in one frame)
 SPEED_INCREMENT = 1.0           # Ball speed increase after each paddle hit
 
 # Initialize pygame modules
@@ -46,7 +46,7 @@ score_cpu = 0
 def reset_ball(serving_to_player=True):
     """Repositions the ball in the center and serves it in the correct direction."""
     ball.center = (WIDTH // 2, HEIGHT // 2)
-    dir_x = 1 if serving_to_player else -1  # Serve direction
+    dir_x = -1 if serving_to_player else 1  # Serve direction (player is on the left)
     dir_y = random.choice((1, -1))          # Random vertical direction
     ball_vel[0] = BALL_SPEED * dir_x
     ball_vel[1] = BALL_SPEED * dir_y
@@ -71,8 +71,9 @@ def set_ball_speed_after_hit(paddle):
     vx = (vx_sq ** 0.5) * x_dir
 
     # Prevent vx from becoming too small (avoid near-vertical bounces)
-    if abs(vx) < 0.1:
-        vx = 0.1 * x_dir
+    # The ball moves int(vx) pixels per frame, so below 1 it would stop moving sideways
+    if abs(vx) < 1:
+        vx = 1.0 * x_dir
         vy = (max(0.0, new_speed**2 - vx**2) ** 0.5) * (1 if vy >= 0 else -1)
 
     # Apply new velocity
@@ -153,10 +154,10 @@ while running:
     # --- SCORING ---
     if ball.left <= 0:                # CPU scores
         score_cpu += 1
-        reset_ball(serving_to_player=False)
+        reset_ball(serving_to_player=True)
     if ball.right >= WIDTH:           # Player scores
         score_player += 1
-        reset_ball(serving_to_player=True)
+        reset_ball(serving_to_player=False)
 
     # --- RENDER FRAME ---
     draw()
@@ -166,7 +167,7 @@ pygame.quit()
 sys.exit()
 
 # This concludes the real-world example of Pygame.
-# Future Stagees may cover more advanced topics like sound, animations, and complex game mechanics. 
+# Future Stages may cover more advanced topics like sound, animations, and complex game mechanics. 
 # For now, thank you for following along!
 
 # Happy Coding!
