@@ -90,6 +90,8 @@ def my_function():
     time.sleep(1)
     return "Done"
 
+my_function()
+
 if 10 > 0:
     print("10 is greater than 0!")
 
@@ -224,8 +226,3 @@ print("You entered:", user_input)
 
 age = int(input("Enter your age: "))
 print("You are", age, "years old.")
-
-import requests
-
-response = requests.get("https://api.github.com")
-print(response.status_code)

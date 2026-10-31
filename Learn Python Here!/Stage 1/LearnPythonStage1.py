@@ -34,7 +34,10 @@ print(Box2)
 print(Box3)
 
 
-# Output: Hello, World!
+# Output:
+# Hello, World!
+# True
+# 32897
 
 
 # -- Lesson 2 -- For loops
@@ -55,7 +58,7 @@ for num in [1, 2, 3, 4, 5]:
 # 5
 
 
-# The most common way to use for loops is by using the range() keyword.
+# The most common way to use for loops is by using the range() function.
 
 for i in range(5):
     print(i)
@@ -67,13 +70,14 @@ for i in range(5):
 # 3 
 # 4
 
-# IMPORTANT NOTE: It will ALWAYS start at 0.
+# IMPORTANT NOTE: With one number, it starts at 0 and stops BEFORE that number.
+# You can pick the start too: range(2, 5) gives 2, 3, 4.
 
 
 # -- Lesson 3 -- While loops
 
-# a while loop can be though of like this:
-# While (argument) is true, do (this)
+# a while loop can be thought of like this:
+# While (condition) is true, do (this)
 
 # E.X
 
@@ -92,7 +96,7 @@ while a < 10:
 # This wont print out 10 because when 
 # it hits 10, it exits the loop.
 
-# Be careful: this loop never ends!
+# Be careful: without the break below, this loop would never end!
 while True:
     print("This runs forever unless you break it!")
     break  # Stops the loop
@@ -103,7 +107,7 @@ while True:
 
 # -- Lesson 4 -- Functions
 
-# Oh boy, here comes the hard part to unnderstand.
+# Oh boy, here comes the hard part to understand.
 # A function can be thought of as a 
 # variable that hold many lines of code.
 
@@ -161,7 +165,7 @@ print(result)
 
 # Classes are like blueprints; They give instructions 
 # on how to build something.
-# (Yes this is techincally OOP)
+# (Yes this is technically OOP)
 
 # Define a class using the keyword "class"
 # You usually want to make a function inside of the class named "__init__".
@@ -175,7 +179,7 @@ class Test:
         self.name = name
 
     def introduce(self):  # Now you can make your own functions
-        print(f"{self.name} says hello!")  # This one uses the name of the class.
+        print(f"{self.name} says hello!")  # This one uses the name stored in the object.
 
 
 Test1 = Test(15, "Bryson")
@@ -185,7 +189,8 @@ Test1.introduce()  # Bryson says hello!
 Test2.introduce()  # Ava says hello!
 
 
-# IMPORTANT: self keyword means the object that is using the function.
+# IMPORTANT: self means the object that is using the function.
+# It is not a keyword, just the name everyone uses for that first parameter.
 
 # Please please PLEASE refer to 
 # https://docs.python.org/3/reference/datamodel.html#object.__init__
@@ -199,8 +204,8 @@ Test2.introduce()  # Ava says hello!
 
 import time
 
-# This adds many new functions to the standard library, 
-# which you have already been using.
+# This lets your code use the functions in the time library.
+# It is part of the standard library, which comes with Python.
 # Some examples of the time functions is:
 print(time.time())  # Prints the current time in Seconds.
 
@@ -212,7 +217,7 @@ print(random.randint(1, 10))  # Prints a random number between 1 and 10
 
 
 # Heres a useful function you might 
-# make using the time.time() function.
+# make using the time.perf_counter() function.
 
 from functools import wraps  # Imports a specific tool from a new lib
 
@@ -238,17 +243,23 @@ def my_function():
     return "Done"
 
 
+my_function()
+
+# Output (the exact time will vary a little):
+# my_function executed in 1.000512 seconds
+
+
 # -- Lesson 7 -- If Statements
 
-# An if statement checks if the argument being passed
-# through it is true, and if it is, run the following code.
+# An if statement checks if the condition after it
+# is true, and if it is, runs the following code.
 
 # E.X
 
 if 10 > 0:
     print("10 is greater than 0!")
 
-# if Statements are often paired with else,and elif operators.
+# if Statements are often paired with the else and elif keywords.
 # else - if the previous statement is false, do this.
 
 if 5 > 100:
@@ -438,6 +449,7 @@ for item in tuple1:
 
 # A set is a collection of unique items.
 # Sets are defined using curly braces {}.
+# (But an empty {} is a dictionary. Use set() for an empty set.)
 
 set1: set = {1, 2, 3, "Hello", True}
 
@@ -452,13 +464,14 @@ set1.remove(2)
 for item in set1:
     print(item)
 
-# Output:
+# Output (sets have no fixed order, so yours may be in a different order):
 # 1
 # 3
-# Hello
-# True
 # 4
+# Hello
 # World
+# True is missing because Python treats True and 1 as equal,
+# so the set only keeps one of them.
 
 # Why are these useful?
 # Tuples are useful when you want to ensure that the data cannot be modified.
